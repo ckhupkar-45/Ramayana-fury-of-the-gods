@@ -97,22 +97,139 @@
       border-top: 1px solid #18304F;
       font-size: 13px;
     }
+    
+/* ===== GOLD AND BLUE NAVIGATION ===== */
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  padding: 15px 20px;
+
+  background: rgba(5, 10, 22, 0.96);
+  border-bottom: 1px solid rgba(242, 140, 40, 0.45);
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(15px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+.navbar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  color: #D9E8FF;
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  transition: all 0.3s ease;
+}
+
+.nav-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+
+  transition: all 0.35s ease;
+}
+
+.navbar a:hover {
+  color: #FFB45E;
+  transform: translateY(-3px);
+}
+
+.navbar a:hover .nav-icon {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 10px rgba(255, 180, 94, 0.8));
+}
+
+/* Mobile navigation */
+
+@media (max-width: 600px) {
+  .navbar {
+    gap: 14px;
+    padding: 12px 8px;
+  }
+
+  .nav-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .navbar a {
+    font-size: 9px;
+  }
+}
   </style>
 </head>
 
 <body>
+
 <nav class="navbar">
-  <a href="#home">HOME</a>
-  <a href="#about">ABOUT</a>
-  <a href="#story">STORY</a>
-  <a href="#world">GAME WORLD</a>
-  <a href="#gameplay">GAMEPLAY</a>
-  <a href="#bosses">BOSSES</a>
-  <a href="#features">FEATURES</a>
-  <a href="#development">DEVELOPMENT</a>
-  <a href="#gallery">GALLERY</a>
-  <a href="#reflection">REFLECTION</a>
+  <a href="#home">
+    <img src="icons/home-temple.png" class="nav-icon" alt="">
+    <span>HOME</span>
+  </a>
+
+  <a href="#about">
+    <img src="icons/about-scroll.png" class="nav-icon" alt="">
+    <span>ABOUT</span>
+  </a>
+
+  <a href="#story">
+    <img src="icons/story-bow.png" class="nav-icon" alt="">
+    <span>STORY</span>
+  </a>
+
+  <a href="#world">
+    <img src="icons/game-world-tree.png" class="nav-icon" alt="">
+    <span>GAME WORLD</span>
+  </a>
+
+  <a href="#gameplay">
+    <img src="icons/gameplay-swords.png" class="nav-icon" alt="">
+    <span>GAMEPLAY</span>
+  </a>
+
+  <a href="#bosses">
+    <img src="icons/bosses-mask.png" class="nav-icon" alt="">
+    <span>BOSSES</span>
+  </a>
+
+  <a href="#features">
+    <img src="icons/features-compass.png" class="nav-icon" alt="">
+    <span>FEATURES</span>
+  </a>
+
+  <a href="#development">
+    <img src="icons/development-tools.png" class="nav-icon" alt="">
+    <span>DEVELOPMENT</span>
+  </a>
+
+  <a href="#gallery">
+    <img src="icons/gallery-play.png" class="nav-icon" alt="">
+    <span>GALLERY</span>
+  </a>
+
+  <a href="#reflection">
+    <img src="icons/reflection-scroll.png" class="nav-icon" alt="">
+    <span>REFLECTION</span>
+  </a>
 </nav>
+
   <header>
     <p class="subtitle">An Epic Mythological Game Project</p>
 
