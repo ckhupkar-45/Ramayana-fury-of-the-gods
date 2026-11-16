@@ -178,6 +178,39 @@ header .button {
   filter: drop-shadow(0 0 10px rgba(255, 180, 94, 0.8));
 }
 
+/* ===== CREATOR'S REALM PORTFOLIO BUTTON ===== */
+
+.navbar a.portfolio-link {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border: 1px solid #F28C28;
+  border-radius: 8px;
+  background: #050A16;
+  box-shadow: 0 0 12px rgba(242, 140, 40, 0.25);
+  transition: all 0.3s ease;
+}
+
+.navbar a.portfolio-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(242, 140, 40, 0.6);
+  border-color: #FFB45E;
+}
+
+.portfolio-icon {
+  display: block;
+  width: 230px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .portfolio-icon {
+    width: 180px;
+  }
+}
+
 /* Mobile navigation */
 
 @media (max-width: 600px) {
@@ -344,8 +377,7 @@ header .button {
    class="portfolio-link">
   <img src="icons/return.PNG"
        class="portfolio-icon"
-       alt="Golden lotus">
-  <span>THE CREATOR'S REALM</span>
+       alt="The Creator's Realm - Main Portfolio">
 </a>
 
 <header id="home">
