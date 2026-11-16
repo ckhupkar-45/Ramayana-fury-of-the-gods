@@ -198,6 +198,93 @@ header .button {
     font-size: 9px;
   }
 }
+    
+/* ===== PROJECT SECTIONS ===== */
+
+.content-section {
+  padding: 90px 25px;
+  text-align: center;
+  border-bottom: 1px solid rgba(242, 140, 40, 0.12);
+}
+
+.content-section h2 {
+  color: #F28C28;
+  font-size: 32px;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.content-section p {
+  max-width: 850px;
+  margin: 0 auto 20px;
+  color: #B8C9E0;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.section-subtitle {
+  color: #FFB45E;
+  font-size: 13px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 40px auto 0;
+}
+
+.project-card {
+  background: linear-gradient(145deg, #10264B, #091426);
+  border: 1px solid rgba(242, 140, 40, 0.35);
+  border-radius: 12px;
+  padding: 30px 22px;
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-7px);
+  border-color: #FFB45E;
+  box-shadow: 0 10px 30px rgba(23, 105, 170, 0.2);
+}
+
+.project-card h3 {
+  color: #FFB45E;
+  margin-bottom: 15px;
+  font-size: 19px;
+}
+
+.project-card p {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.gallery-placeholder {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #10264B;
+  border: 1px dashed #F28C28;
+  border-radius: 10px;
+  color: #B8C9E0;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 600px) {
+  .content-section {
+    padding: 65px 18px;
+  }
+
+  .content-section h2 {
+    font-size: 26px;
+  }
+}
   </style>
 </head>
 
@@ -281,6 +368,338 @@ header .button {
       progress through legendary stages.
     </p>
   </section>
+
+<!-- ===== STORY SECTION ===== -->
+
+<section id="story" class="content-section">
+  <p class="section-subtitle">An Epic Mythological Journey</p>
+  <h2>The Story</h2>
+
+  <p>
+    Inspired by the Vanvas arc of the Ramayana,
+    Ramayana: Fury of the Gods takes players into
+    a mythical world inspired by the legendary
+    journey of Lord Ram.
+  </p>
+
+  <p>
+    Explore mysterious lands, encounter powerful
+    enemies and overcome challenging battles as
+    you progress through six stages of the adventure.
+  </p>
+</section>
+
+
+<!-- ===== GAME WORLD SECTION ===== -->
+
+<section id="world" class="content-section">
+  <p class="section-subtitle">Explore the Unknown</p>
+  <h2>The Game World</h2>
+
+  <p>
+    The game world combines fantasy environments,
+    mythological inspiration and stylized 3D design.
+    Each location creates a different atmosphere
+    for exploration and combat.
+  </p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Magical Forest</h3>
+      <p>
+        A mysterious forest featuring stylized pink
+        trees and a fantasy atmosphere.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Ancient Caves</h3>
+      <p>
+        Explore mysterious caves, including an
+        environment featuring a statue of Lord Shiva.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Floating Islands</h3>
+      <p>
+        Discover five floating islands inspired by
+        the Panchavati environment.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Ram Setu</h3>
+      <p>
+        Experience an environment inspired by the
+        legendary bridge of Ram Setu.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Ravana's Palace</h3>
+      <p>
+        The planned setting for the final encounter
+        with Ravana.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GAMEPLAY SECTION ===== -->
+
+<section id="gameplay" class="content-section">
+  <p class="section-subtitle">Combat • Exploration • Progression</p>
+  <h2>Gameplay</h2>
+
+  <p>
+    The game combines open-world-style exploration
+    within individual stages with level-based
+    progression and boss encounters.
+  </p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Explore</h3>
+      <p>
+        Discover the environments and explore
+        different areas within each stage.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Fight</h3>
+      <p>
+        Face enemies and take on challenging
+        boss encounters.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Progress</h3>
+      <p>
+        Defeat the stage boss to unlock the
+        next level and continue the journey.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Player Interface</h3>
+      <p>
+        The interface displays health, XP, coins,
+        abilities and gameplay controls.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== BOSSES SECTION ===== -->
+
+<section id="bosses" class="content-section">
+  <p class="section-subtitle">Face Powerful Enemies</p>
+  <h2>Boss Battles</h2>
+
+  <p>
+    Boss encounters are an important part of the
+    progression system. Players must defeat the
+    boss of a stage before moving forward.
+  </p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Five Boss Encounters</h3>
+      <p>
+        Five boss encounters have been implemented
+        as part of the game's progression.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Ravana</h3>
+      <p>
+        Ravana was planned as the final boss.
+        His final character model and encounter
+        remain unfinished.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FEATURES SECTION ===== -->
+
+<section id="features" class="content-section">
+  <p class="section-subtitle">Designed for Immersion</p>
+  <h2>Game Features</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Six Stages</h3>
+      <p>
+        A six-level adventure with stage-based
+        progression.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Day and Night</h3>
+      <p>
+        A changing day-and-night environment
+        that adds atmosphere to the world.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Lighting Effects</h3>
+      <p>
+        Baked lighting effects help create the
+        visual atmosphere of the environments.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Sound Design</h3>
+      <p>
+        Background music and environmental sound
+        effects enhance the experience.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Player HUD</h3>
+      <p>
+        Health, experience, coins and ability
+        indicators support gameplay.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Fantasy Art Style</h3>
+      <p>
+        Stylized environments and distinctive
+        visual choices create a mythical world.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== DEVELOPMENT SECTION ===== -->
+
+<section id="development" class="content-section">
+  <p class="section-subtitle">Behind the Project</p>
+  <h2>Development</h2>
+
+  <p>
+    This project was developed as part of a
+    one-year university game development programme.
+    The work involved environment creation,
+    game design, visual development and gameplay
+    implementation.
+  </p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Unreal Engine</h3>
+      <p>
+        Used during the development of the game.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>CORE</h3>
+      <p>
+        Used to help complete the six-level game
+        within the available development time.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>Autodesk Maya</h3>
+      <p>
+        Used for designing 3D elements and
+        supporting the visual development.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== GALLERY SECTION ===== -->
+
+<section id="gallery" class="content-section">
+  <p class="section-subtitle">A Look Inside the Game</p>
+  <h2>Gallery</h2>
+
+  <p>
+    A collection of environments, gameplay moments,
+    interface designs and development screenshots.
+  </p>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="gallery-placeholder">
+        Environment Screenshot
+      </div>
+      <h3>Game Environments</h3>
+      <p>Scenes from the fantasy game world.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="gallery-placeholder">
+        Gameplay Screenshot
+      </div>
+      <h3>Gameplay</h3>
+      <p>Exploration and combat moments.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="gallery-placeholder">
+        Boss Screenshot
+      </div>
+      <h3>Boss Encounters</h3>
+      <p>Implemented boss battle experiences.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="gallery-placeholder">
+        UI Screenshot
+      </div>
+      <h3>Game Interface</h3>
+      <p>Player HUD and interaction elements.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== REFLECTION SECTION ===== -->
+
+<section id="reflection" class="content-section">
+  <p class="section-subtitle">The Journey of Creation</p>
+  <h2>Project Reflection</h2>
+
+  <p>
+    Developing Ramayana: Fury of the Gods was an
+    opportunity to explore game development through
+    environment design, gameplay creation and
+    visual storytelling.
+  </p>
+
+  <p>
+    Working within a limited university project
+    timeline required planning, experimentation
+    and decisions about development tools and
+    project scope.
+  </p>
+
+  <p>
+    The project represents an important step in
+    my journey as a game developer and a foundation
+    for future creative work.
+  </p>
+</section>
 
   <footer>
     Ramayana: Fury of the Gods | University Game Project
