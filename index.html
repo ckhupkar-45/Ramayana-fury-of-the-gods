@@ -20,19 +20,39 @@
     }
 
  
+
 header {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 30px;
+  padding: 30px 20px;
   background: radial-gradient(
     ellipse at center,
     #10264B 0%,
     #050A16 70%
   );
+}
+
+header .subtitle,
+header .description {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header .description {
+  max-width: 650px;
+}
+
+header .button {
+  align-self: center;
+}
+
 }
 
 
