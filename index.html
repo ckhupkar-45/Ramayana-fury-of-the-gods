@@ -982,6 +982,60 @@ header .button {
     </p>
 
     <div id="gallery-grid" class="gallery-grid"></div>
+  
+/* MAIN CHARACTER SHOWCASE */
+.main-characters {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.main-character-card {
+  background: #10264B;
+  border: 1px solid rgba(242,140,40,.45);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  transition: .3s ease;
+}
+
+.main-character-card:hover {
+  transform: translateY(-6px);
+  border-color: #FFB45E;
+  box-shadow: 0 10px 25px rgba(242,140,40,.2);
+}
+
+.main-character-card img {
+  width: 100%;
+  height: 380px;
+  object-fit: contain;
+  background: #050A16;
+  border-radius: 9px;
+  cursor: zoom-in;
+}
+
+.main-character-card h3 {
+  color: #FFB45E;
+  margin: 18px 0 10px;
+}
+
+.main-character-card p {
+  color: #B8C9E0;
+  line-height: 1.6;
+}
+
+@media(max-width: 650px) {
+  .main-characters {
+    grid-template-columns: 1fr;
+  }
+
+  .main-character-card img {
+    height: 320px;
+  }
+}
+
 
 </section>
 
@@ -991,6 +1045,7 @@ header .button {
             aria-label="Close image">&times;</button>
     <img id="gallery-large-image" src="" alt="Expanded game screenshot">
 </div>
+
 
 <script>
 (async function loadRamayanaGallery() {
@@ -1027,19 +1082,11 @@ header .button {
 
             const img = document.createElement("img");
             img.src = file.download_url;
-            img.alt = file.name;
+            img.alt = "Ramayana game screenshot";
             img.loading = "lazy";
 
-            const caption = document.createElement("div");
-            caption.className = "gallery-caption";
-            caption.textContent = file.name.replace(/\.[^/.]+$/, "");
-
+            // No filename or caption underneath the image
             card.appendChild(img);
-            card.appendChild(caption);
-
-            card.addEventListener("click", () => {
-                openGalleryViewer(file.download_url, file.name);
-            });
 
             grid.appendChild(card);
         });
@@ -1056,27 +1103,75 @@ header .button {
 
 })();
 
+
+/* OPEN FULL-SCREEN IMAGE VIEWER */
 function openGalleryViewer(imageURL, imageName) {
-    document.getElementById("gallery-large-image").src = imageURL;
-    document.getElementById("gallery-large-image").alt = imageName;
-    document.getElementById("gallery-viewer").classList.add("active");
+
+    const viewer = document.getElementById("gallery-viewer");
+    const largeImage = document.getElementById("gallery-large-image");
+
+    largeImage.src = imageURL;
+    largeImage.alt = imageName || "Ramayana project image";
+
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden";
 }
 
+
+/* CLOSE IMAGE VIEWER */
 function closeGalleryViewer(event) {
+
+    const viewer = document.getElementById("gallery-viewer");
+
     if (
-        event.target.id === "gallery-viewer" ||
-        event.target.classList.contains("viewer-close")
+        !event ||
+        event.target === viewer ||
+        event.target.closest(".viewer-close")
     ) {
-        document.getElementById("gallery-viewer").classList.remove("active");
+        viewer.classList.remove("active");
+        document.body.style.overflow = "";
     }
 }
 
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        document.getElementById("gallery-viewer").classList.remove("active");
+
+/* MAKE ALL PROJECT IMAGES CLICKABLE */
+document.addEventListener("click", function(event) {
+
+    const img = event.target.closest(
+        ".gallery-card img, .poster-card img, .main-character-card img"
+    );
+
+    if (!img) return;
+
+    event.preventDefault();
+
+    openGalleryViewer(img.src, img.alt);
+
+});
+
+
+/* DOUBLE-CLICK ANYWHERE IN VIEWER TO CLOSE */
+document.addEventListener("dblclick", function(event) {
+
+    const viewer = document.getElementById("gallery-viewer");
+
+    if (viewer && viewer.classList.contains("active")) {
+        closeGalleryViewer();
     }
+
+});
+
+
+/* CLOSE WITH ESCAPE KEY */
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeGalleryViewer();
+    }
+
 });
 </script>
+
 
 
 <!-- ===== REFLECTION SECTION ===== -->
