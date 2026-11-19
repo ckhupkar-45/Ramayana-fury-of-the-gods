@@ -666,51 +666,229 @@ header .button {
 </section>
 
 
-<!-- ===== GALLERY SECTION ===== -->
+
+<style>
+/* RAMAYANA GAME GALLERY */
+#gallery {
+    padding: 70px 5%;
+    text-align: center;
+}
+
+#gallery .gallery-intro {
+    color: #B8C9E0;
+    max-width: 750px;
+    margin: 15px auto 35px;
+    line-height: 1.7;
+}
+
+#gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+#gallery .gallery-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(242, 140, 40, 0.45);
+    border-radius: 12px;
+    background: #10264B;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#gallery .gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(242,140,40,0.25);
+}
+
+#gallery .gallery-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+#gallery .gallery-card:hover img {
+    transform: scale(1.06);
+}
+
+#gallery .gallery-caption {
+    padding: 13px;
+    color: #FFB45E;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+#gallery .gallery-status {
+    color: #B8C9E0;
+    margin: 20px 0;
+}
+
+#gallery .gallery-error {
+    color: #FFB45E;
+}
+
+/* IMAGE VIEWER */
+#gallery-viewer {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    background: rgba(0,0,0,0.94);
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+#gallery-viewer.active {
+    display: flex;
+}
+
+#gallery-viewer img {
+    max-width: 92%;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 2px solid #F28C28;
+    border-radius: 8px;
+}
+
+#gallery-viewer .viewer-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 38px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 600px) {
+    #gallery .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #gallery .gallery-card img {
+        height: 210px;
+    }
+}
+</style>
 
 <section id="gallery" class="content-section">
-  <p class="section-subtitle">A Look Inside the Game</p>
-  <h2>Gallery</h2>
 
-  <p>
-    A collection of environments, gameplay moments,
-    interface designs and development screenshots.
-  </p>
+    <h2>GAME GALLERY</h2>
 
-  <div class="project-grid">
-    <div class="project-card">
-      <div class="gallery-placeholder">
-        Environment Screenshot
-      </div>
-      <h3>Game Environments</h3>
-      <p>Scenes from the fantasy game world.</p>
-    </div>
+    <p class="gallery-intro">
+        Explore the world of Ramayana: Fury of the Gods.
+        Discover the environments, gameplay moments and visual
+        elements created throughout this university game project.
+    </p>
 
-    <div class="project-card">
-      <div class="gallery-placeholder">
-        Gameplay Screenshot
-      </div>
-      <h3>Gameplay</h3>
-      <p>Exploration and combat moments.</p>
-    </div>
+    <p id="gallery-status" class="gallery-status">
+        Loading game screenshots...
+    </p>
 
-    <div class="project-card">
-      <div class="gallery-placeholder">
-        Boss Screenshot
-      </div>
-      <h3>Boss Encounters</h3>
-      <p>Implemented boss battle experiences.</p>
-    </div>
+    <div id="gallery-grid" class="gallery-grid"></div>
 
-    <div class="project-card">
-      <div class="gallery-placeholder">
-        UI Screenshot
-      </div>
-      <h3>Game Interface</h3>
-      <p>Player HUD and interaction elements.</p>
-    </div>
-  </div>
 </section>
+
+<div id="gallery-viewer" onclick="closeGalleryViewer(event)">
+    <button class="viewer-close"
+            onclick="closeGalleryViewer(event)"
+            aria-label="Close image">&times;</button>
+    <img id="gallery-large-image" src="" alt="Expanded game screenshot">
+</div>
+
+<script>
+(async function loadRamayanaGallery() {
+
+    const grid = document.getElementById("gallery-grid");
+    const status = document.getElementById("gallery-status");
+
+    const apiURL =
+        "https://api.github.com/repos/ckhupkar-45/ramayana-fury-of-the-gods/contents/images";
+
+    try {
+        const response = await fetch(apiURL);
+
+        if (!response.ok) {
+            throw new Error("Could not retrieve the images folder.");
+        }
+
+        const files = await response.json();
+
+        const images = files.filter(file =>
+            file.type === "file" &&
+            /\.(png|jpe?g|webp|gif)$/i.test(file.name)
+        );
+
+        if (images.length === 0) {
+            status.textContent = "No screenshots found.";
+            return;
+        }
+
+        images.forEach(file => {
+
+            const card = document.createElement("div");
+            card.className = "gallery-card";
+
+            const img = document.createElement("img");
+            img.src = file.download_url;
+            img.alt = file.name;
+            img.loading = "lazy";
+
+            const caption = document.createElement("div");
+            caption.className = "gallery-caption";
+            caption.textContent = file.name.replace(/\.[^/.]+$/, "");
+
+            card.appendChild(img);
+            card.appendChild(caption);
+
+            card.addEventListener("click", () => {
+                openGalleryViewer(file.download_url, file.name);
+            });
+
+            grid.appendChild(card);
+        });
+
+        status.textContent =
+            images.length + " game screenshots loaded";
+
+    } catch (error) {
+        status.textContent =
+            "Unable to load screenshots. Please refresh the page.";
+        status.classList.add("gallery-error");
+        console.error(error);
+    }
+
+})();
+
+function openGalleryViewer(imageURL, imageName) {
+    document.getElementById("gallery-large-image").src = imageURL;
+    document.getElementById("gallery-large-image").alt = imageName;
+    document.getElementById("gallery-viewer").classList.add("active");
+}
+
+function closeGalleryViewer(event) {
+    if (
+        event.target.id === "gallery-viewer" ||
+        event.target.classList.contains("viewer-close")
+    ) {
+        document.getElementById("gallery-viewer").classList.remove("active");
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        document.getElementById("gallery-viewer").classList.remove("active");
+    }
+});
+</script>
 
 
 <!-- ===== REFLECTION SECTION ===== -->
